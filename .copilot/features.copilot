@@ -1,0 +1,54 @@
+﻿### 🧠 **Prompt for Code Generation Agent**
+
+> **Context:**
+> I am building a Visual Studio 2022 extension (VSIX) that improves Git stash workflow by allowing users to create **named Git stashes** directly from the Git Changes window or a custom tool window.
+
+The extension should support the following:
+
+---
+
+### 🧰 **Feature Requirements:**
+
+* ✅ Show list of current stashes with names and timestamps.
+* ✅ Allow naming a stash at creation time (not just `WIP` default).
+* ✅ Allow editing a stash name (via re-apply and re-save if needed).
+* ✅ Support custom templates for naming (e.g. "📦 {branchName} – {timestamp} – {summary}").
+* ✅ Hook into `Git stash` creation, drop, apply, and pop.
+* ✅ Detect current Git repository and branch context (`IGitExt` or `IGitRepositoryInfo`).
+* ✅ Provide a custom tool window (dockable) called `Stash Manager`.
+* ✅ Optionally (if possible) extend or overlay buttons near Git Changes window.
+* ✅ Persist stash metadata using `.git/info/` or local JSON cache.
+* ✅ Commands should be accessible from command palette and context menus.
+
+---
+
+### 🖥️ **UI/UX Considerations:**
+
+* Display table/grid of stashes: name, original WIP message, date, branch, base commit.
+* Add “Create Named Stash” button with input box + template preview.
+* Integrate status bar messages or notifications when stash is created or restored.
+* Support light/dark themes in UI (WPF binding).
+
+---
+
+### 🛠️ **Tech Notes:**
+
+* Target: Visual Studio 2022, using VS SDK (`AsyncPackage`, `ProvideToolWindow`, `IGitExt`, MEF)
+* Language: C#
+* UI Framework: WPF (.xaml + code-behind)
+* Git API: `Microsoft.TeamFoundation.Git.Controls.Extensibility.IGitExt` or newer SDKs
+
+---
+
+### 🧑‍💻 **Generate code or templates for:**
+
+1. [ ] `StashManagerToolWindow` — dockable WPF window
+2. [ ] `GitStashService` — utility class to wrap stash CLI calls
+3. [ ] Custom command: `CreateNamedStashCommand`
+4. [ ] JSON settings model for stash name templates
+5. [ ] `IGitExt` usage to detect repo and current branch
+6. [ ] Stash view model and observable collection for UI binding
+7. [ ] Integration with Git Changes (if feasible)
+8. [ ] Git stash parsing (CLI output or internal model if available)
+
+---
