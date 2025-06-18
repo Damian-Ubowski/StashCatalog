@@ -4,6 +4,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="ToolWindows\StashManagerToolWindowContent.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ToolWindows\StashManagerToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.9.2092" PrivateAssets="all" />
