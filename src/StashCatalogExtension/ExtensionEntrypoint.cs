@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Extensibility;
+using StashCatalogExtension.Services;
 
 namespace StashCatalogExtension
 {
@@ -15,9 +16,9 @@ namespace StashCatalogExtension
             Metadata = new(
                     id: "StashCatalogExtension.f6251360-c7c3-4a5b-8c0c-892d106f087e",
                     version: this.ExtensionAssemblyVersion,
-                    publisherName: "Publisher name",
-                    displayName: "StashCatalogExtension",
-                    description: "Extension description"),
+                    publisherName: "Damian Ubowski",
+                    displayName: "Stash Catalog",
+                    description: "Visual Studio extension that improves Git stash workflow by allowing users to create named Git stashes"),
         };
 
         /// <inheritdoc />
@@ -25,7 +26,9 @@ namespace StashCatalogExtension
         {
             base.InitializeServices(serviceCollection);
 
-            // You can configure dependency injection here by adding services to the serviceCollection.
+            // Register our services for dependency injection
+            serviceCollection.AddSingleton<GitStashService>();
+            serviceCollection.AddSingleton<GitRepositoryService>();
         }
     }
 }
